@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=pa$$w0rd
+      - MYSQL_USER=foo
+      - MYSQL_PASSWORD=bar1234
+      - MYSQL_DATABASE=academy
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  client:
+    image: mariadb
+    command: ["sleep", "3600"]
+    depends_on:
+      - mariadb
+volumes:
+  mariadb_data:
+    driver: local
