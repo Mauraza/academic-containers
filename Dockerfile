@@ -1,13 +1,13 @@
-FROM debian:stable-slim
+FROM registry.suse.com/bci/bci-base:16.0
 
-LABEL maintainer "Webmaster webmaster@example.com" 
-  
-RUN apt-get update && apt-get install -y nginx curl
-  
-COPY index.html /var/www/html 
-  
-EXPOSE 80 
-WORKDIR /var/www/html 
-  
-ENTRYPOINT ["nginx"] 
-CMD ["-c", "/etc/nginx/nginx.conf", "-g", "daemon off;"]
+LABEL org.opencontainers.image.title="My website"
+
+RUN zypper -n install nginx
+
+COPY --chown=root:root index.html /srv/www/htdocs
+
+WORKDIR /srv/www/htdocs
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
