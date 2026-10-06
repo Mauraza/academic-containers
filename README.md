@@ -35,11 +35,11 @@ docker ps
 - Enter a running container:
 
 ```bash
-podman exec -ti mynginx bash
+podman exec -ti mynginx sh
 ```
 
 ```bash
-docker exec -ti mynginx bash
+docker exec -ti mynginx sh
 ```
 
 - Check a container's logs:
@@ -135,11 +135,11 @@ docker kill mynginx
 - delete a container:
 
 ```bash
-podman delete mynginx
+podman rm mynginx
 ```
 
 ```bash
-docker delete mynginx
+docker rm mynginx
 ```
 
 ## Let’s explore a bit the filesystem
@@ -174,14 +174,14 @@ podman history alpine
 docker history alpine
 ```
 
-- Lunch a alpine and attach to it:
+- Launch an Alpine container and attach to it:
 
 ```bash
-podman run --name mytest --ti alpine bash
+podman run --name mytest -it alpine sh
 ```
 
 ```bash
-docker run --name mytest --ti alpine bash
+docker run --name mytest -it alpine sh
 ```
 
 Inside the container (mytest):
